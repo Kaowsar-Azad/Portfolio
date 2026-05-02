@@ -27,8 +27,8 @@ const categories = [
   {
     label: "Backend",
     skills: [
-      { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "Node.js", icon: SiNodedotjs, color: "#83CD29" },
+      { name: "MongoDB", icon: SiMongodb, color: "#13AA52" },
       { name: "JSON API", icon: SiJsonwebtokens, color: "#f59e0b" },
     ],
   },
@@ -73,18 +73,19 @@ function FanCard({ skill, index, total, inView, multiplier }) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 300, rotateZ: 0, rotateX: 0 }}
-      animate={inView ? {
+      whileInView={{
         opacity: 1,
         x: translateX,
         y: translateY,
         rotateZ: rotateZ,
         rotateX: -15 // Slight backward tilt for depth
-      } : { opacity: 0, y: 300, rotateZ: 0, rotateX: 0 }}
+      }}
+      viewport={{ once: false, amount: 0 }}
       transition={{
         type: "spring",
         stiffness: 80,
         damping: 12,
-        delay: inView ? index * 0.05 : 0
+        delay: index * 0.05
       }}
       whileHover={{ 
         y: translateY - 100, // Lifts much higher

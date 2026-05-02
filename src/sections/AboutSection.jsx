@@ -101,9 +101,22 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden bg-dark/40" ref={ref}>
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Animated floating orbs */}
+      <motion.div
+        animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-72 h-72 bg-primary/8 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{ x: [0, -20, 0], y: [0, 25, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/8 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        animate={{ opacity: [0.03, 0.08, 0.03] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full blur-[120px] pointer-events-none"
+      />
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
@@ -130,22 +143,38 @@ export default function AboutSection() {
             className="relative"
           >
             {/* Main card */}
-            <div className="glass-strong rounded-3xl p-8 relative overflow-hidden border border-primary/15">
-              {/* Card shine */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+            <motion.div
+              whileHover={{ scale: 1.01 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              className="glass-strong rounded-3xl p-8 relative overflow-hidden border border-primary/15 group/card"
+            >
+              {/* Animated shimmer border */}
+              <motion.div
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+                className="absolute top-0 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-primary to-transparent"
+              />
 
               {/* Avatar section */}
               <div className="flex items-center gap-6 mb-8">
-                <div className="relative">
+                <motion.div
+                  whileHover={{ rotate: [0, -3, 3, 0], scale: 1.05 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative"
+                >
                   <div className="w-20 h-20 rounded-2xl overflow-hidden shadow-lg shadow-primary/20 border border-white/10 flex items-center justify-center bg-dark">
                     <img 
                       src="https://i.ibb.co.com/j9DjZphw/photo-2026-03-09-22-38-12.jpg" 
                       alt="Kaowsar Azad" 
-                      className="w-full h-full object-cover object-center scale-110"
+                      className="w-full h-full object-cover object-center scale-110 transition-transform duration-700 group-hover/card:scale-125"
                     />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-dark animate-pulse" />
-                </div>
+                  <motion.div
+                    animate={{ scale: [1, 1.4, 1], opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-dark"
+                  />
+                </motion.div>
                 <div>
                   <h3 className="font-display font-bold text-xl text-white">Kaowsar Azad</h3>
                   <p className="text-primary-light text-sm">Full Stack Developer</p>
@@ -174,15 +203,19 @@ export default function AboutSection() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={inView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.4 + i * 0.1 }}
-                    className="bg-white/5 rounded-xl p-3 border border-white/5 hover:border-primary/30 transition-colors"
+                    whileHover={{ y: -4, scale: 1.04 }}
+                    className="bg-white/5 rounded-xl p-3 border border-white/5 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 cursor-default"
                   >
-                    <span className="text-xl">{fact.icon}</span>
+                    <motion.span
+                      whileHover={{ scale: 1.3, rotate: 10 }}
+                      className="text-xl inline-block"
+                    >{fact.icon}</motion.span>
                     <div className="text-xs text-slate-500 mt-1">{fact.label}</div>
                     <div className="text-sm font-semibold text-white">{fact.value}</div>
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Floating orbs */}
             <div className="absolute -z-10 -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl" />
@@ -197,24 +230,29 @@ export default function AboutSection() {
               variants={fadeUp}
               custom={2}
             >
-              <h3 className="font-display font-bold text-2xl text-white mb-4">
+              <motion.h3
+                initial={{ opacity: 0, x: -20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="font-display font-bold text-2xl text-white mb-4"
+              >
                 Crafting Digital Experiences <span className="gradient-text">Since 2025</span>
-              </h3>
+              </motion.h3>
               <div className="space-y-4 text-slate-400 text-base leading-relaxed">
-                <p>
-                  Hi! I'm a passionate full-stack developer with over 1 years of experience building 
-                  scalable web applications. I specialize in React, Next.js, and Node.js.
-                </p>
-                <p>
-                  My journey began with a curiosity for how websites work, which evolved into a career 
-                  building products that millions of people use daily. I thrive at the intersection of 
-                  design and engineering — creating interfaces that are both beautiful and technically 
-                  robust.
-                </p>
-                <p>
-                  When I'm not coding, you'll find me contributing to open source, writing technical 
-                  articles, or exploring the latest developments in AI.
-                </p>
+                {[
+                  "Hi! I'm a passionate full-stack developer with over 1 years of experience building scalable web applications. I specialize in React, Next.js, and Node.js.",
+                  "My journey began with a curiosity for how websites work, which evolved into a career building products that millions of people use daily. I thrive at the intersection of design and engineering — creating interfaces that are both beautiful and technically robust.",
+                  "When I'm not coding, you'll find me contributing to open source, writing technical articles, or exploring the latest developments in AI.",
+                ].map((text, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ delay: 0.4 + i * 0.15, duration: 0.5 }}
+                  >
+                    {text}
+                  </motion.p>
+                ))}
               </div>
             </motion.div>
 

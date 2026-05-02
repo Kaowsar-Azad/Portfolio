@@ -8,26 +8,33 @@ import { motion, useScroll, useTransform, useSpring, useInView } from "framer-mo
 // ==========================================
 const experiences = [
   {
-    year: "2022 — PRESENT",
-    role: "Senior Full Stack Developer",
-    company: "TechCorp Inc.",
-    desc: "Leading the architectural transition to microservices and mentoring a team of 8 developers.",
-    icon: "🚀"
-  },
-  {
-    year: "2021 — 2022",
+    year: "2026 — PRESENT",
     role: "Full Stack Developer",
-    company: "Startup XYZ",
-    desc: "Built a real-time collaboration tool from scratch, achieving $1M+ in ARR.",
-    icon: "💻"
+    company: "Self Learning & Projects",
+    desc: "Building full-stack web applications using modern technologies like React, Next.js, and backend tools. Focused on scalable architecture, performance, and real-world problem solving.",
+    icon: "🚀",
   },
   {
-    year: "2019 — 2021",
-    role: "Frontend Engineer",
-    company: "Creative Agency",
-    desc: "Developed award-winning marketing websites using React, Three.js, and Framer Motion.",
-    icon: "🎨"
-  }
+    year: "2025 — PRESENT",
+    role: "Frontend Web Developer",
+    company: "Self Learning",
+    desc: "Developing responsive and interactive user interfaces using React and Next.js. Focused on UI/UX, performance optimization, and modern web practices.",
+    icon: "💻",
+  },
+  {
+    year: "2023 — PRESENT",
+    role: "Computer Science Student (Diploma)",
+    company: "Diploma in CST",
+    desc: "Pursuing Diploma in Computer Science and Technology (2023–2027). Learning programming, software development, and core computer science fundamentals.",
+    icon: "🎓",
+  },
+  {
+    year: "2023 — 2024",
+    role: "Programming Fundamentals",
+    company: "Self Learning",
+    desc: "Gained basic knowledge in Python and Java. Developed problem-solving skills, logical thinking, and understanding of core programming concepts.",
+    icon: "🧠",
+  },
 ];
 
 // ==========================================

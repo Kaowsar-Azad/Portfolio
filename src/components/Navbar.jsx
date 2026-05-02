@@ -52,7 +52,7 @@ export default function Navbar() {
       }`}
     >
       <div 
-        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ${
+        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 nav-glass-area ${
           scrolled
             ? "w-full max-w-5xl rounded-full backdrop-blur-xl bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)] border border-white/10 py-2.5 px-6"
             : "w-full max-w-7xl mx-auto px-6 py-5 bg-transparent"
