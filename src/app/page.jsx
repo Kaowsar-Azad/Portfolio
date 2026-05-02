@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
 
 // ssr: false is only allowed in Client Components in Next.js 15
@@ -15,6 +16,10 @@ const ProjectsSection = dynamic(() => import("@/sections/ProjectsSection"), { ss
 const ContactSection = dynamic(() => import("@/sections/ContactSection"), { ssr: false });
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   return (
     <main className="gradient-bg min-h-screen">
       <Navbar />

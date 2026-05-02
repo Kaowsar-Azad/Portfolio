@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -40,11 +41,29 @@ const socialLinks = [
 ];
 
 export default function SocialLinks() {
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const hero = document.getElementById("home");
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
   return (
+    <AnimatePresence>
+      {visible && (
     <motion.div
+      key="social-links"
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: 1.2, duration: 0.6 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.4 }}
       className="fixed left-5 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col items-center gap-3"
     >
       {/* Vertical line top */}
@@ -61,9 +80,6 @@ export default function SocialLinks() {
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
             className="w-10 h-10 glass rounded-full flex items-center justify-center text-slate-400 transition-all duration-300"
-            style={{
-              animationDelay: `${i * 0.1}s`,
-            }}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = color;
               e.currentTarget.style.boxShadow = `0 0 20px ${glow}`;
@@ -89,5 +105,7 @@ export default function SocialLinks() {
       {/* Vertical line bottom */}
       <div className="w-px h-12 bg-gradient-to-b from-primary/50 to-transparent" />
     </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

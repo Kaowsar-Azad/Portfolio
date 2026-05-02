@@ -1,9 +1,84 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useInView } from "@/hooks/useInView";
-import { FaCode, FaServer, FaDatabase, FaTools } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
+
+const LINES = [
+  { text: "$ kaowsar --init workspace",        color: "#a78bfa", delay: 0    },
+  { text: "✓ Loading React 19...",              color: "#34d399", delay: 600  },
+  { text: "✓ Next.js 15 ready",                color: "#34d399", delay: 1100 },
+  { text: "✓ Tailwind CSS configured",         color: "#34d399", delay: 1600 },
+  { text: "$ install backend",                 color: "#a78bfa", delay: 2200 },
+  { text: "✓ Node.js + Express loaded",        color: "#34d399", delay: 2800 },
+  { text: "✓ MongoDB connected",               color: "#34d399", delay: 3300 },
+  { text: "$ deploy --platform=aws",           color: "#a78bfa", delay: 3900 },
+  { text: "✓ Docker container running",        color: "#34d399", delay: 4500 },
+  { text: "✓ All systems operational 🚀",      color: "#67e8f9", delay: 5100 },
+];
+
+function TerminalBlock({ inView }) {
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (!inView || started) return;
+    setStarted(true);
+    LINES.forEach((line, i) => {
+      setTimeout(() => {
+        setVisibleCount((c) => c + 1);
+      }, line.delay);
+    });
+  }, [inView, started]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: 0.4, duration: 0.6 }}
+      className="mt-8 rounded-2xl overflow-hidden border border-white/10"
+      style={{ background: "rgba(8, 12, 24, 0.92)" }}
+    >
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5"
+        style={{ background: "rgba(255,255,255,0.03)" }}>
+        <span className="w-3 h-3 rounded-full bg-red-500/80" />
+        <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
+        <span className="w-3 h-3 rounded-full bg-green-500/80" />
+        <span className="ml-3 text-[11px] text-slate-500 font-mono">kaowsar@portfolio ~ zsh</span>
+      </div>
+
+      {/* Terminal body */}
+      <div className="px-5 py-3 font-mono text-[11px] space-y-1 min-h-[140px]">
+        {LINES.slice(0, visibleCount).map((line, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ color: line.color }}
+          >
+            {line.text}
+          </motion.div>
+        ))}
+        {/* Blinking cursor */}
+        {visibleCount < LINES.length && (
+          <span className="inline-block w-2 h-3.5 bg-primary/80 animate-pulse align-middle" />
+        )}
+        {visibleCount >= LINES.length && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-slate-600 mt-2"
+          >
+            █ ready
+          </motion.div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
 
 const facts = [
   { icon: "🎓", label: "Education", value: "B.Sc. Computer Science" },
@@ -25,7 +100,7 @@ export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="about" className="py-28 relative overflow-hidden bg-dark/40" ref={ref}>
+    <section id="about" className="py-20 relative overflow-hidden bg-dark/40" ref={ref}>
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl pointer-events-none" />
@@ -143,33 +218,8 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            {/* What I do cards */}
-            <motion.div
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              variants={fadeUp}
-              custom={3}
-              className="grid grid-cols-2 gap-4 mt-8"
-            >
-              {[
-                { icon: FaCode, title: "Frontend", desc: "React, Next.js", color: "from-primary to-primary/50" },
-                { icon: FaServer, title: "Backend", desc: "Node.js, Express, APIs", color: "from-secondary to-secondary/50" },
-                { icon: FaDatabase, title: "Database", desc: "PostgreSQL, MongoDB, Redis", color: "from-accent to-accent/50" },
-                { icon: FaTools, title: "DevOps", desc: "Docker, AWS, CI/CD", color: "from-green-500 to-green-500/50" },
-              ].map(({ icon: Icon, title, desc, color }) => (
-                <motion.div
-                  key={title}
-                  whileHover={{ y: -4, scale: 1.02 }}
-                  className="glass rounded-xl p-4 border border-white/5 hover:border-primary/30 transition-all cursor-default"
-                >
-                  <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center mb-3 shadow-lg`}>
-                    <Icon className="text-white text-sm" />
-                  </div>
-                  <div className="text-sm font-semibold text-white">{title}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{desc}</div>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* Animated Terminal Block */}
+            <TerminalBlock inView={inView} />
           </div>
         </div>
       </div>

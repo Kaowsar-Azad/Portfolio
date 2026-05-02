@@ -45,6 +45,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Glass arrow cursor — desktop only */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M 4 2 L 4 22 L 8.5 17.5 L 11.5 24 L 14 23 L 11 16.5 L 17 16.5 Z' fill='rgba(255%2C255%2C255%2C0.08)' stroke='rgba(255%2C255%2C255%2C0.7)' stroke-width='1.2' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 4 2, auto !important;
+  }
+  a, button, [role="button"], input, textarea, select {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M 4 2 L 4 22 L 8.5 17.5 L 11.5 24 L 14 23 L 11 16.5 L 17 16.5 Z' fill='rgba(124%2C58%2C237%2C0.12)' stroke='rgba(167%2C139%2C250%2C0.85)' stroke-width='1.2' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 4 2, pointer !important;
+  }
+}
+
+
 /* Animated gradient background */
 .gradient-bg {
   background: radial-gradient(ellipse at top left, rgba(124, 58, 237, 0.15) 0%, transparent 50%),

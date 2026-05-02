@@ -1,7 +1,7 @@
 import "./globals.css";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 // Polyfill for localStorage on the server to prevent 500 errors
-// during SSR or module evaluation of third-party libraries.
 if (typeof window === "undefined") {
   global.localStorage = {
     getItem: () => null,
@@ -30,7 +30,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="antialiased bg-[#030712] text-white">
-        {children}
+        <SmoothScrollProvider>
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );

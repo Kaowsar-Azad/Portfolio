@@ -274,7 +274,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1, y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
-              className="absolute -left-4 top-16 glass px-3 py-2 rounded-xl text-xs font-medium border border-primary/20"
+              className="absolute -left-2 sm:-left-4 top-16 glass px-3 py-2 rounded-xl text-xs font-medium border border-primary/20"
             >
               <span className="gradient-text font-bold">React</span> Expert
             </motion.div>
@@ -283,7 +283,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1.1, y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 } }}
-              className="absolute -right-6 top-24 glass px-3 py-2 rounded-xl text-xs font-medium border border-secondary/20"
+              className="absolute -right-2 sm:-right-6 top-24 glass px-3 py-2 rounded-xl text-xs font-medium border border-secondary/20"
             >
               ⚡ Next.js 15
             </motion.div>
@@ -292,7 +292,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: [0, -8, 0] }}
               transition={{ delay: 1.2, y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 } }}
-              className="absolute -bottom-2 left-8 glass px-3 py-2 rounded-xl text-xs font-medium border border-accent/20"
+              className="absolute -bottom-2 left-4 sm:left-8 glass px-3 py-2 rounded-xl text-xs font-medium border border-accent/20"
             >
               🔥 JavaScript
             </motion.div>
@@ -310,7 +310,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1.4, y: { duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 2 } }}
-              className="absolute -right-10 bottom-12 glass px-3 py-2 rounded-xl text-xs font-medium border border-green-500/20"
+              className="hidden sm:block absolute -right-6 sm:-right-10 bottom-12 glass px-3 py-2 rounded-xl text-xs font-medium border border-green-500/20"
             >
               🍃 MongoDB
             </motion.div>
