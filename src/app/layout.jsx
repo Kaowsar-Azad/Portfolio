@@ -1,27 +1,21 @@
-if (typeof window === 'undefined') {
+import "./globals.css";
+
+// Polyfill for localStorage on the server to prevent 500 errors
+// during SSR or module evaluation of third-party libraries.
+if (typeof window === "undefined") {
   global.localStorage = {
     getItem: () => null,
-    setItem: () => {},
-    removeItem: () => {},
-    clear: () => {},
-    length: 0,
+    setItem: () => null,
+    removeItem: () => null,
+    clear: () => null,
     key: () => null,
+    length: 0,
   };
 }
 
-import "./globals.css";
-
 export const metadata = {
-  title: "Alex Johnson | Full Stack Developer Portfolio",
-  description:
-    "Full Stack Developer specializing in React, Next.js, and Node.js. Building scalable web applications with beautiful UIs.",
-  keywords: ["Full Stack Developer", "React", "Next.js", "Portfolio"],
-  authors: [{ name: "Alex Johnson" }],
-  openGraph: {
-    title: "Alex Johnson | Full Stack Developer Portfolio",
-    description: "Crafting digital experiences that leave a lasting impression.",
-    type: "website",
-  },
+  title: "Kaowsar Azad | Full Stack Developer Portfolio",
+  description: "Full Stack Developer specializing in React, Next.js, and Node.js.",
 };
 
 export default function RootLayout({ children }) {
@@ -35,7 +29,9 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased bg-[#030712] text-white">
+        {children}
+      </body>
     </html>
   );
 }

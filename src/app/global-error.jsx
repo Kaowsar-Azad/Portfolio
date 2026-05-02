@@ -3,50 +3,16 @@
 export default function GlobalError({ error, reset }) {
   return (
     <html>
-      <body
-        style={{
-          background: "#030712",
-          color: "white",
-          fontFamily: "monospace",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          margin: 0,
-          padding: "2rem",
-          flexDirection: "column",
-          gap: "1rem",
-          textAlign: "center",
-        }}
-      >
-        <h1 style={{ color: "#a78bfa", fontSize: "2rem" }}>Something went wrong</h1>
-        <pre
-          style={{
-            background: "#0f172a",
-            padding: "1rem",
-            borderRadius: "8px",
-            maxWidth: "600px",
-            overflow: "auto",
-            fontSize: "0.8rem",
-            color: "#f87171",
-            border: "1px solid #7c3aed33",
-          }}
-        >
-          {error.message}
-        </pre>
+      <body className="bg-[#030712] text-white flex flex-col items-center justify-center min-h-screen p-6 text-center">
+        <h2 className="text-3xl font-bold mb-4">Critical Error</h2>
+        <p className="text-slate-400 mb-8">
+          A critical error occurred. Please try refreshing the page.
+        </p>
         <button
-          onClick={reset}
-          style={{
-            background: "linear-gradient(135deg, #7c3aed, #06b6d4)",
-            border: "none",
-            color: "white",
-            padding: "0.75rem 2rem",
-            borderRadius: "9999px",
-            cursor: "pointer",
-            fontSize: "0.9rem",
-          }}
+          onClick={() => reset()}
+          className="px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-full font-bold"
         >
-          Try Again
+          Refresh App
         </button>
       </body>
     </html>

@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiHome, FiUser, FiCpu, FiBriefcase, FiLayers, FiMail } from "react-icons/fi";
 
 const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+  { href: "#home", label: "Home", icon: FiHome },
+  { href: "#about", label: "About", icon: FiUser },
+  { href: "#skills", label: "Skills", icon: FiCpu },
+  { href: "#experience", label: "Experience", icon: FiBriefcase },
+  { href: "#projects", label: "Projects", icon: FiLayers },
+  { href: "#contact", label: "Contact", icon: FiMail },
 ];
 
 export default function Navbar() {
@@ -47,13 +47,17 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-2xl bg-dark/80 shadow-lg shadow-primary/10 border-b border-primary/10"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-500 ${
+        scrolled ? "pt-4 px-4 sm:px-6 pointer-events-none" : "pt-0 px-0"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div 
+        className={`pointer-events-auto flex items-center justify-between transition-all duration-500 ${
+          scrolled
+            ? "w-full max-w-5xl rounded-full backdrop-blur-xl bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)] border border-white/10 py-2.5 px-6"
+            : "w-full max-w-7xl mx-auto px-6 py-5 bg-transparent"
+        }`}
+      >
         {/* Logo */}
         <motion.a
           href="#home"
@@ -61,38 +65,37 @@ export default function Navbar() {
             e.preventDefault(); 
             handleNav("#home"); 
           }}
-          className="flex items-center gap-2 group"
+          className="relative flex items-center justify-center w-12 h-12 rounded-full bg-white/5 border border-white/10 overflow-hidden group"
           whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.97 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center p-1 overflow-hidden">
-            <img src="https://i.ibb.co.com/33LrMqc/k-img.png" alt="Kaowsar Logo" className="w-full h-full object-contain mix-blend-screen" />
-          </div>
-          <span className="font-display font-bold text-2xl tracking-tight">
-            <span className="text-white">Kaow</span>
-            <span className="gradient-text">sar</span>
-          </span>
+          <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <img src="https://i.ibb.co.com/33LrMqc/k-img.png" alt="Kaowsar Logo" className="w-8 h-8 object-contain mix-blend-screen relative z-10 group-hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] transition-all duration-300" />
         </motion.a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1 p-1.5 rounded-full bg-white/5 border border-white/5 backdrop-blur-md shadow-inner">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => handleNav(link.href)}
-              className={`relative nav-link text-sm font-medium transition-colors duration-200 pb-1 ${
+              className={`relative px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 group/link ${
                 active === link.href
-                  ? "text-primary-light"
+                  ? "text-white"
                   : "text-slate-400 hover:text-white"
               }`}
             >
-              {link.label}
               {active === link.href && (
                 <motion.span
-                  layoutId="activeLink"
-                  className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-secondary rounded-full"
+                  layoutId="activeNavPill"
+                  className="absolute inset-0 bg-white/10 rounded-full"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
+              <div className="relative z-10 flex items-center gap-2">
+                <link.icon className={`text-lg transition-transform duration-300 ${active === link.href ? "text-cyan-400 scale-110" : "opacity-70 group-hover/link:opacity-100 group-hover/link:scale-110"}`} />
+                <span className="hidden lg:block">{link.label}</span>
+              </div>
             </button>
           ))}
         </div>
@@ -134,22 +137,16 @@ export default function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => handleNav(link.href)}
-                  className={`text-left text-sm font-medium py-2 px-3 rounded-lg transition-all ${
+                  className={`flex items-center gap-3 text-left text-sm font-medium py-2.5 px-4 rounded-xl transition-all ${
                     active === link.href
                       ? "bg-primary/20 text-primary-light"
                       : "text-slate-400 hover:text-white hover:bg-white/5"
                   }`}
                 >
-                  {link.label}
+                  <link.icon className={`text-lg ${active === link.href ? "text-primary-light" : "opacity-50"}`} />
+                  <span>{link.label}</span>
                 </button>
               ))}
-              <a
-                href="/resume.pdf"
-                download
-                className="btn-neon text-center px-5 py-2 rounded-full text-sm font-semibold text-white mt-2"
-              >
-                <span>Download Resume</span>
-              </a>
             </div>
           </motion.div>
         )}
@@ -157,3 +154,4 @@ export default function Navbar() {
     </motion.nav>
   );
 }
+

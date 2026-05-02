@@ -123,7 +123,7 @@ export default function AboutSection() {
               custom={2}
             >
               <h3 className="font-display font-bold text-2xl text-white mb-4">
-                Crafting Digital Experiences <span className="gradient-text">Since 2019</span>
+                Crafting Digital Experiences <span className="gradient-text">Since 2025</span>
               </h3>
               <div className="space-y-4 text-slate-400 text-base leading-relaxed">
                 <p>
@@ -176,3 +176,5 @@ export default function AboutSection() {
     </section>
   );
 }
+
+

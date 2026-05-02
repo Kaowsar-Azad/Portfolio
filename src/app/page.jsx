@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
-// Dynamically import all sections with SSR disabled
+// ssr: false is only allowed in Client Components in Next.js 15
+// This page is intentionally a Client Component to enable this pattern
 const Navbar = dynamic(() => import("@/components/Navbar"), { ssr: false });
 const SocialLinks = dynamic(() => import("@/components/SocialLinks"), { ssr: false });
 const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
@@ -15,23 +15,6 @@ const ProjectsSection = dynamic(() => import("@/sections/ProjectsSection"), { ss
 const ContactSection = dynamic(() => import("@/sections/ContactSection"), { ssr: false });
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <main className="gradient-bg min-h-screen flex items-center justify-center bg-dark">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-[#7c3aed30] border-t-[#7c3aed] rounded-full animate-spin"></div>
-          <p className="text-slate-400 font-mono text-sm animate-pulse">Loading Portfolio...</p>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="gradient-bg min-h-screen">
       <Navbar />

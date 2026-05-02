@@ -6,7 +6,6 @@ import {
   FaLinkedin,
   FaTwitter,
   FaInstagram,
-  FaYoutube,
 } from "react-icons/fa";
 
 const socialLinks = [
@@ -37,13 +36,6 @@ const socialLinks = [
     label: "Instagram",
     color: "#e1306c",
     glow: "rgba(225,48,108,0.6)",
-  },
-  {
-    icon: FaYoutube,
-    href: "https://youtube.com",
-    label: "YouTube",
-    color: "#ff0000",
-    glow: "rgba(255,0,0,0.5)",
   },
 ];
 

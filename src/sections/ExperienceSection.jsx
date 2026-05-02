@@ -114,8 +114,10 @@ export default function ExperienceSection() {
 
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
 
+  const top = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section id="experience" ref={containerRef} className="py-32 relative bg-[#030712] overflow-hidden">
+    <section id="experience" ref={containerRef} className="pt-10 pb-32 relative bg-[#030712] overflow-hidden">
       {/* Background patterns and glows */}
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#020617] to-transparent z-0" />
@@ -136,7 +138,6 @@ export default function ExperienceSection() {
             EXPERIENCE
           </h2>
         </motion.div>
-
         <div className="relative">
           {/* অত্যন্ত চিকন ড্যাশড লাইন (১ পিক্সেল) */}
           <div className="absolute left-12 md:left-1/2 top-0 bottom-0 w-[1px] md:-translate-x-[0.5px] bg-white/5 z-0">
@@ -150,7 +151,7 @@ export default function ExperienceSection() {
           {/* স্ক্রোল কণা */}
           <motion.div
             style={{ 
-              top: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
+              top,
               left: "50%",
               translateX: "-50%"
             }}

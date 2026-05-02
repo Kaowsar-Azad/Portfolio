@@ -7,7 +7,7 @@ import Tilt from "react-parallax-tilt";
 import {
   SiHtml5, SiJavascript, SiReact, SiNextdotjs, SiTailwindcss, SiFramer, SiVuedotjs,
   SiNodedotjs, SiExpress, SiMongodb, SiFirebase, SiJsonwebtokens,
-  SiGithub, SiVercel, SiFigma, SiNpm, SiNetlify, SiGit, SiDaisyui
+  SiGithub, SiVercel, SiFigma, SiNpm, SiNetlify, SiGit
 } from "react-icons/si";
 import { FaNetworkWired, FaMagic, FaCode, FaPaintBrush, FaIcons, FaRocket, FaPalette, FaBell } from "react-icons/fa";
 
@@ -42,7 +42,7 @@ const categories = [
       { name: "GitHub", icon: SiGithub, color: "#ffffff" },
       { name: "Vercel", icon: SiVercel, color: "#ffffff" },
       { name: "Git", icon: SiGit, color: "#F05032" },
-      { name: "Daisy UI", icon: SiDaisyui, color: "#1ad1a5" },
+      { name: "Daisy UI", icon: SiTailwindcss, color: "#1ad1a5" },
       { name: "Toastify", icon: FaBell, color: "#f59e0b" },
     ],
   },
@@ -177,7 +177,7 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-28 relative overflow-hidden bg-[#030712]" ref={ref}>
+    <section id="skills" className="pt-28 pb-40 relative overflow-hidden bg-[#030712]" ref={ref}>
       {/* Unique background for Skills section */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
