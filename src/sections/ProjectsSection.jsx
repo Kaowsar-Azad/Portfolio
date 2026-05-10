@@ -48,19 +48,6 @@ const projects = [
     accent: "#10b981",
     category: "Full Stack",
     stars: 54,
-  },
-  {
-    title: "Personal portfolio website",
-    desc: "A modern and responsive personal portfolio website showcasing services, projects, and professional information with a clean and minimal design.",
-    long: "Powered by Socket.io and WebRTC for peer-to-peer video calls and messaging.",
-    tags: ["HTML5", "Tailwind CSS" , "JavaScript (ES6+)" , "Next.js","React","Framer Motion","Lenis"],
-    github: "https://github.com/Kaowsar-Azad/personal-website",
-    live: "https://example.com",
-    emoji: "https://i.ibb.co.com/MyyBs67q/Chat-GPT-Image-May-3-2026-12-40-01-AM.png",
-    gradient: "from-cyan-600 to-blue-900",
-    accent: "#06b6d4",
-    category: "Frontend",
-    stars: 48,
   }
 ];
 
