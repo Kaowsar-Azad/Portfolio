@@ -13,8 +13,6 @@ const LINES = [
   { text: "$ install backend",                 color: "#a78bfa", delay: 2200 },
   { text: "✓ Node.js + Express loaded",        color: "#34d399", delay: 2800 },
   { text: "✓ MongoDB connected",               color: "#34d399", delay: 3300 },
-  { text: "$ deploy --platform=aws",           color: "#a78bfa", delay: 3900 },
-  { text: "✓ Docker container running",        color: "#34d399", delay: 4500 },
   { text: "✓ All systems operational 🚀",      color: "#67e8f9", delay: 5100 },
 ];
 
@@ -81,10 +79,10 @@ function TerminalBlock({ inView }) {
 }
 
 const facts = [
-  { icon: "🎓", label: "Education", value: "B.Sc. Computer Science" },
+  { icon: "🎓", label: "Education", value: " Computer Science and Technology " },
   { icon: "🟢", label: "Availability", value: "Open to Work" },
   { icon: "💼", label: "Experience", value: "1+ Years" },
-  { icon: "🚀", label: "Projects", value: "5+ Delivered" },
+  { icon: "🚀", label: "Projects", value: "20+ Delivered" },
 ];
 
 const fadeUp = {

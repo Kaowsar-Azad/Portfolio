@@ -72,6 +72,8 @@ function FanCard({ skill, index, total, inView, multiplier }) {
     <motion.div
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setTimeout(() => setIsHovered(false), 800)}
       initial={{ opacity: 0, y: 300, rotateZ: 0, rotateX: 0 }}
       whileInView={{
         opacity: 1,
@@ -93,6 +95,13 @@ function FanCard({ skill, index, total, inView, multiplier }) {
         rotateX: 0, // Straightens out
         scale: 1.25,
         zIndex: 100 
+      }}
+      whileTap={{
+        y: translateY - 60,
+        rotateZ: 0,
+        rotateX: 0,
+        scale: 1.15,
+        zIndex: 100
       }}
       className="absolute bottom-4 cursor-pointer"
       style={{
