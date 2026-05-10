@@ -418,3 +418,63 @@ body {
 .backface-hidden {
   backface-visibility: hidden;
 }
+
+/* ============ MOBILE RESPONSIVE FIXES ============ */
+
+/* Prevent iOS auto-zoom on inputs */
+@media (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Disable 3D card hover effects on touch for performance */
+  .card-3d:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Make section headings smaller */
+  .section-heading {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  /* Ensure no horizontal overflow anywhere */
+  section, .container, main {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  /* Better touch targets */
+  button, a {
+    min-height: 36px;
+  }
+
+  /* Reduce blob animation size on mobile to avoid overflow */
+  .blob {
+    max-width: 80vw;
+    max-height: 80vw;
+  }
+}
+
+/* Tablet fixes */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid-bg {
+    background-size: 40px 40px;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 380px) {
+  .gradient-text {
+    font-size: inherit;
+  }
+  
+  .btn-neon {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

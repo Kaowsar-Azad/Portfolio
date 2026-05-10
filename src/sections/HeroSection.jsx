@@ -113,7 +113,7 @@ export default function HeroSection() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 pt-24 pb-16 flex flex-col lg:flex-row items-center gap-16 lg:gap-8 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 flex flex-col lg:flex-row items-center gap-10 lg:gap-8 w-full">
         {/* Left: Text */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -148,7 +148,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl mb-4 leading-tight"
+            className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl mb-4 leading-tight"
           >
             <span className="gradient-text text-glow">Kaowsar </span>
             <span className="gradient-text text-glow">Azad</span>
@@ -159,7 +159,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="text-2xl sm:text-3xl font-semibold text-slate-300 mb-6 h-10 flex items-center justify-center lg:justify-start"
+            className="text-xl sm:text-3xl font-semibold text-slate-300 mb-6 h-10 flex items-center justify-center lg:justify-start"
           >
             <span className="gradient-text-purple">{typedRole}</span>
             <span className="typing-cursor" />
@@ -170,7 +170,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
-            className="text-slate-400 text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+            className="text-slate-400 text-base sm:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
           >
             I craft beautiful, high-performance digital experiences. Passionate about
             clean code, modern architectures, and pushing the boundaries of what&apos;s
@@ -235,7 +235,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="flex-1 flex justify-center items-center relative"
         >
-          <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+          <div className="relative w-60 h-60 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
             {/* Outer glow ring */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -274,7 +274,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1, y: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}
-              className="absolute -left-2 sm:-left-4 top-16 glass px-3 py-2 rounded-xl text-xs font-medium border border-primary/20"
+              className="absolute -left-1 sm:-left-4 top-14 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-primary/20"
             >
               <span className="gradient-text font-bold">React</span> Expert
             </motion.div>
@@ -283,7 +283,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1.1, y: { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 } }}
-              className="absolute -right-2 sm:-right-6 top-24 glass px-3 py-2 rounded-xl text-xs font-medium border border-secondary/20"
+              className="absolute -right-1 sm:-right-6 top-20 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-secondary/20"
             >
               ⚡ Next.js 15
             </motion.div>
@@ -292,7 +292,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: [0, -8, 0] }}
               transition={{ delay: 1.2, y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 } }}
-              className="absolute -bottom-2 left-4 sm:left-8 glass px-3 py-2 rounded-xl text-xs font-medium border border-accent/20"
+              className="absolute -bottom-2 left-2 sm:left-8 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-accent/20"
             >
               🔥 JavaScript
             </motion.div>
@@ -301,7 +301,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: [0, -8, 0] }}
               transition={{ delay: 1.3, y: { duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1.5 } }}
-              className="absolute top-0 right-0 glass px-3 py-2 rounded-xl text-xs font-medium border border-green-400/20"
+              className="absolute -top-2 right-0 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-green-400/20"
             >
               🟢 Open to Work
             </motion.div>

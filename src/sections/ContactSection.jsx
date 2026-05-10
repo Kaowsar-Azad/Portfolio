@@ -91,11 +91,11 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 relative bg-dark/30 overflow-hidden">
+    <section id="contact" className="py-20 sm:py-28 relative bg-dark/30 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
       <div className="absolute top-1/4 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           initial="hidden"
@@ -113,7 +113,7 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Left: Info */}
           <motion.div
             initial="hidden"
@@ -129,7 +129,7 @@ export default function ContactSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between gap-4 glass rounded-xl p-4 border border-white/5 hover:border-primary/25 transition-all group"
+                className="flex items-center justify-between gap-3 glass rounded-xl p-3 sm:p-4 border border-white/5 hover:border-primary/25 transition-all group"
               >
                 <div className="flex items-center gap-4">
                   <div
@@ -140,7 +140,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="text-xs text-slate-500 mb-0.5">{label}</div>
-                    <div className="text-sm font-medium text-slate-200">{value}</div>
+                    <div className="text-xs sm:text-sm font-medium text-slate-200 break-all">{value}</div>
                   </div>
                 </div>
                 
@@ -211,7 +211,7 @@ export default function ContactSection() {
           >
             <form
               onSubmit={handleSubmit}
-              className="glass-strong rounded-3xl p-8 border border-primary/10 space-y-5"
+              className="glass-strong rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-primary/10 space-y-5"
             >
               <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full mb-2" />
 

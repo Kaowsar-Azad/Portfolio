@@ -187,12 +187,12 @@ export default function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="pt-28 pb-40 relative overflow-hidden bg-[#030712]" ref={ref}>
+    <section id="skills" className="pt-20 pb-32 sm:pt-28 sm:pb-40 relative overflow-hidden bg-[#030712]" ref={ref}>
       {/* Unique background for Skills section */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center">
 
         {/* heading */}
         <motion.div
@@ -241,7 +241,7 @@ export default function SkillsSection() {
         </motion.div>
 
         {/* 3D Card Fan Container */}
-        <div className="relative w-full max-w-5xl h-[250px] sm:h-[300px] md:h-[360px] flex justify-center items-end mt-5 perspective-[1500px]">
+        <div className="relative w-full max-w-5xl h-[220px] sm:h-[300px] md:h-[360px] flex justify-center items-end mt-5 perspective-[1500px]">
           <AnimatePresence mode="wait">
             {current.skills.map((skill, i) => (
               <FanCard

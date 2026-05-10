@@ -55,8 +55,8 @@ export default function Footer() {
         className="absolute bottom-0 right-1/4 w-48 h-24 bg-secondary/10 rounded-full blur-3xl pointer-events-none" 
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
-        <div className="grid lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12">
           {/* Brand */}
           <motion.div variants={itemVariants} className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <motion.div variants={itemVariants} className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div variants={itemVariants} className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-slate-600 text-sm flex items-center gap-1">
             © {year} DevFolio. Made with
             <motion.span

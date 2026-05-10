@@ -54,8 +54,8 @@ export default function Navbar() {
       <div 
         className={`pointer-events-auto flex items-center justify-between transition-all duration-500 nav-glass-area ${
           scrolled
-            ? "w-full max-w-5xl rounded-full backdrop-blur-xl bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)] border border-white/10 py-2.5 px-6"
-            : "w-full max-w-7xl mx-auto px-6 py-5 bg-transparent"
+            ? "w-full max-w-5xl rounded-full backdrop-blur-xl bg-white/[0.03] shadow-[0_8px_32px_rgba(0,0,0,0.2)] border border-white/10 py-2.5 px-4 sm:px-6"
+            : "w-full max-w-7xl mx-auto px-4 sm:px-6 py-5 bg-transparent"
         }`}
       >
         {/* Logo */}
@@ -130,7 +130,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden glass-strong border-t border-primary/10"
+            className="pointer-events-auto md:hidden glass-strong border-t border-primary/10 w-full max-w-7xl mx-auto"
           >
             <div className="px-6 py-4 flex flex-col gap-3">
               {navLinks.map((link) => (

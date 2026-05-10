@@ -98,7 +98,7 @@ export default function AboutSection() {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section id="about" className="py-20 relative overflow-hidden bg-dark/40" ref={ref}>
+    <section id="about" className="py-16 sm:py-20 relative overflow-hidden bg-dark/40" ref={ref}>
       {/* Animated floating orbs */}
       <motion.div
         animate={{ x: [0, 30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
@@ -116,7 +116,7 @@ export default function AboutSection() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary rounded-full blur-[120px] pointer-events-none"
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial="hidden"
@@ -131,7 +131,7 @@ export default function AboutSection() {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left: Visual card */}
           <motion.div
             initial="hidden"
@@ -144,7 +144,7 @@ export default function AboutSection() {
             <motion.div
               whileHover={{ scale: 1.01 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="glass-strong rounded-3xl p-8 relative overflow-hidden border border-primary/15 group/card"
+              className="glass-strong rounded-3xl p-5 sm:p-8 relative overflow-hidden border border-primary/15 group/card"
             >
               {/* Animated shimmer border */}
               <motion.div

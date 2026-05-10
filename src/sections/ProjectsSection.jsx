@@ -143,7 +143,7 @@ export default function ProjectsSection() {
   const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-28 relative bg-[#030712] overflow-hidden" ref={ref}>
+    <section id="projects" className="py-20 sm:py-28 relative bg-[#030712] overflow-hidden" ref={ref}>
       {/* Background elements */}
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#020617] to-transparent z-0" />
@@ -163,7 +163,7 @@ export default function ProjectsSection() {
       {/* Unique purple glow for Projects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-[radial-gradient(circle_at_center,_rgba(168,85,247,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* হেডিং সেকশন */}
         <motion.div
@@ -226,7 +226,7 @@ export default function ProjectsSection() {
         </div>
 
         {/* প্রজেক্ট গ্রিড */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <ProjectCard key={project.title} project={project} i={i} setSelected={setSelected} />
@@ -249,10 +249,10 @@ export default function ProjectsSection() {
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
-              className="bg-[#0f172a] border border-white/10 rounded-[2rem] max-w-2xl w-full overflow-hidden shadow-2xl"
+              className="bg-[#0f172a] border border-white/10 rounded-[1.5rem] sm:rounded-[2rem] max-w-2xl w-full overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="h-64 relative flex items-center justify-center overflow-hidden">
+              <div className="h-48 sm:h-64 relative flex items-center justify-center overflow-hidden">
                 <div className={`absolute inset-0 bg-gradient-to-br ${selected.gradient} opacity-10`} />
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
                   {selected.emoji.startsWith("http") ? (
@@ -263,8 +263,8 @@ export default function ProjectsSection() {
                 </div>
                 <button onClick={() => setSelected(null)} className="absolute top-6 right-6 text-white text-2xl z-20 bg-black/40 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md">×</button>
               </div>
-              <div className="p-8">
-                <h3 className="text-3xl font-bold text-white mb-4">{selected.title}</h3>
+              <div className="p-5 sm:p-8">
+                <h3 className="text-xl sm:text-3xl font-bold text-white mb-4">{selected.title}</h3>
                 <p className="text-slate-400 mb-8 leading-relaxed">{selected.long}</p>
                 <div className="mt-8">
                   {/* সুন্দর হিন্টস */}
@@ -286,7 +286,7 @@ export default function ProjectsSection() {
                   </motion.div>
 
                   {/* বাটনসমূহ */}
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <motion.a 
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
