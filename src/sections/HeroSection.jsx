@@ -216,7 +216,7 @@ export default function HeroSection() {
             </motion.button>
 
             <motion.a
-              href="/resume.pdf"
+              href="S M Kaowsar.Resume.pdf"
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

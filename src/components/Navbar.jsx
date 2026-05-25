@@ -103,8 +103,8 @@ export default function Navbar() {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
           <motion.a
-            href="/resume.pdf"
-            download
+            href="https://drive.google.com/file/d/1b5-mXdUrcDVCHx-rbvlnOA12tz4Wlzt8/view?usp=sharing"
+            target="_black"
             className="btn-neon px-5 py-2 rounded-full text-sm font-semibold text-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
