@@ -48,7 +48,7 @@ const categories = [
   },
 ];
 
-/* ── 3D Fan Card ── */
+/* ── 3D Fan Card (Desktop & Tablet) ── */
 function FanCard({ skill, index, total, inView, multiplier }) {
   const [isHovered, setIsHovered] = useState(false);
   
@@ -75,14 +75,18 @@ function FanCard({ skill, index, total, inView, multiplier }) {
       onTouchStart={() => setIsHovered(true)}
       onTouchEnd={() => setTimeout(() => setIsHovered(false), 800)}
       initial={{ opacity: 0, y: 300, rotateZ: 0, rotateX: 0 }}
-      whileInView={{
+      animate={inView ? {
         opacity: 1,
         x: translateX,
         y: translateY,
         rotateZ: rotateZ,
         rotateX: -15 // Slight backward tilt for depth
+      } : {
+        opacity: 0,
+        y: 300,
+        rotateZ: 0,
+        rotateX: 0
       }}
-      viewport={{ once: false, amount: 0 }}
       transition={{
         type: "spring",
         stiffness: 80,
@@ -119,7 +123,7 @@ function FanCard({ skill, index, total, inView, multiplier }) {
         glareMaxOpacity={0.4}
         glareColor={skill.color}
         glarePosition="all"
-        className="w-[140px] h-[190px] sm:w-[180px] sm:h-[240px] md:w-[220px] md:h-[300px] rounded-2xl flex flex-col items-center justify-center gap-4 bg-[#0a0f1c]/80 border shadow-2xl transition-colors duration-300 hover:border-opacity-50 hover:bg-[#0a0f1c]/90"
+        className="w-[180px] h-[240px] md:w-[220px] md:h-[300px] rounded-2xl flex flex-col items-center justify-center gap-4 bg-[#0a0f1c]/80 border shadow-2xl transition-colors duration-300 hover:border-opacity-50 hover:bg-[#0a0f1c]/90"
         style={{ borderColor: `${skill.color}40` }}
       >
         {/* Permanent subtle tint background so skill is identifiable without hovering */}
@@ -170,7 +174,8 @@ function FanCard({ skill, index, total, inView, multiplier }) {
 export default function SkillsSection() {
   const [active, setActive] = useState("Frontend");
   const [multiplier, setMultiplier] = useState(65);
-  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [cardsRef, cardsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const current = categories.find((c) => c.label === active);
 
@@ -207,8 +212,11 @@ export default function SkillsSection() {
           <h2 className="font-display font-bold text-4xl sm:text-6xl text-white">
             My <span className="gradient-text">Skills</span>
           </h2>
-          <p className="text-slate-400 mt-4 text-sm font-mono tracking-widest">
+          <p className="text-slate-400 mt-4 text-sm font-mono tracking-widest hidden sm:block">
             Hover a card to "pick" it from the fan.
+          </p>
+          <p className="text-slate-400 mt-4 text-xs font-mono tracking-widest sm:hidden">
+            Tap on any skill to experience the 3D tilt.
           </p>
         </motion.div>
 
@@ -240,20 +248,85 @@ export default function SkillsSection() {
           ))}
         </motion.div>
 
-        {/* 3D Card Fan Container */}
-        <div className="relative w-full max-w-5xl h-[220px] sm:h-[300px] md:h-[360px] flex justify-center items-end mt-5 perspective-[1500px]">
-          <AnimatePresence mode="wait">
-            {current.skills.map((skill, i) => (
-              <FanCard
-                key={`${active}-${skill.name}`}
-                skill={skill}
-                index={i}
-                total={current.skills.length}
-                inView={inView}
-                multiplier={multiplier}
-              />
-            ))}
-          </AnimatePresence>
+        {/* Cards Wrapper (Desktop Fan + Mobile Grid) */}
+        <div ref={cardsRef} className="w-full">
+          {/* 3D Card Fan Container (Desktop & Tablet) */}
+          <div className="hidden sm:flex relative w-full max-w-5xl h-[300px] md:h-[360px] justify-center items-end mt-12 perspective-[1500px]">
+            <AnimatePresence mode="wait">
+              {current.skills.map((skill, i) => (
+                <FanCard
+                  key={`${active}-${skill.name}`}
+                  skill={skill}
+                  index={i}
+                  total={current.skills.length}
+                  inView={cardsInView}
+                  multiplier={multiplier}
+                />
+              ))}
+            </AnimatePresence>
+          </div>
+
+          {/* Mobile Grid View (Responsive) */}
+          <div className="w-full mt-10 sm:hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active}
+                initial={{ opacity: 0, y: 15 }}
+                animate={cardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="grid grid-cols-2 gap-4 w-full max-w-sm mx-auto px-2"
+              >
+                {current.skills.map((skill, i) => {
+                  const Icon = skill.icon;
+                  return (
+                    <motion.div
+                      key={`${active}-${skill.name}-mobile`}
+                      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                      animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 15,
+                        delay: i * 0.05,
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-full"
+                    >
+                      <Tilt
+                        tiltMaxAngleX={12}
+                        tiltMaxAngleY={12}
+                        perspective={800}
+                        glareEnable={true}
+                        glareMaxOpacity={0.2}
+                        glareColor={skill.color}
+                        className="w-full h-[110px] rounded-2xl flex flex-col items-center justify-center gap-2 bg-[#0a0f1c]/80 border shadow-lg cursor-pointer"
+                        style={{ borderColor: `${skill.color}25` }}
+                      >
+                        {/* Permanent subtle background gradient matching the skill */}
+                        <div
+                          className="absolute inset-0 rounded-2xl opacity-[0.03] pointer-events-none"
+                          style={{
+                            background: `linear-gradient(135deg, ${skill.color}, transparent)`,
+                          }}
+                        />
+                        <Icon
+                          className="text-3xl drop-shadow-md"
+                          style={{ color: skill.color }}
+                        />
+                        <span
+                          className="text-xs font-bold text-center uppercase tracking-wider px-1"
+                          style={{ color: skill.color }}
+                        >
+                          {skill.name}
+                        </span>
+                      </Tilt>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
 
       </div>

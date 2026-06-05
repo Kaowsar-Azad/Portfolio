@@ -66,7 +66,7 @@ function ProjectCard({ project, i, setSelected }) {
       layout
       initial={{ opacity: 0, y: 150, x: spreadX, rotate: spreadRotate, scale: 0.8 }}
       whileInView={{ opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }}
-      viewport={{ once: false, amount: 0, margin: "0px" }}
+      viewport={{ once: true, amount: 0, margin: "0px" }}
       transition={{
         duration: 0.75,
         delay: i * 0.12,

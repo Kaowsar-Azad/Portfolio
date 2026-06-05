@@ -307,12 +307,30 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
               transition={{ delay: 1.4, y: { duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 2 } }}
               className="hidden sm:block absolute -right-6 sm:-right-10 bottom-12 glass px-3 py-2 rounded-xl text-xs font-medium border border-green-500/20"
             >
               🍃 MongoDB
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0, y: [0, -8, 0] }}
+              transition={{ delay: 1.5, y: { duration: 3.6, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}
+              className="absolute -left-4 sm:-left-8 bottom-16 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-green-500/20"
+            >
+              🟢 Node.js
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: [0, -8, 0] }}
+              transition={{ delay: 1.6, y: { duration: 4.4, repeat: Infinity, ease: "easeInOut", delay: 1.2 } }}
+              className="absolute -bottom-4 right-4 sm:right-12 glass px-2 py-1.5 rounded-xl text-xs font-medium border border-slate-500/20"
+            >
+              🚂 Express.js
             </motion.div>
           </div>
         </motion.div>

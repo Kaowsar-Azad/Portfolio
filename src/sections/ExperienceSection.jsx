@@ -74,7 +74,7 @@ function ExperienceCard({ exp, index }) {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.2 }}
       className={`relative flex flex-col md:flex-row gap-6 md:gap-8 mb-20 md:mb-32 ${index % 2 === 0 ? "md:flex-row-reverse" : ""} group z-10 perspective-1000 ${isInView ? "active-card" : ""}`}
     >
       {/* সেন্টার আইকন - গ্লোয়িং ইফেক্ট সহ */}

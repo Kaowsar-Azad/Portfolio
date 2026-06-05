@@ -100,7 +100,7 @@ export default function ContactSection() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={fadeDown}
           className="text-center mb-16"
         >
@@ -118,7 +118,7 @@ export default function ContactSection() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={fadeRight}
             className="lg:col-span-2 space-y-6"
           >
@@ -205,7 +205,7 @@ export default function ContactSection() {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.1 }}
             variants={fadeLeft}
             className="lg:col-span-3"
           >
