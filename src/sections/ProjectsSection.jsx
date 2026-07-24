@@ -48,12 +48,26 @@ const projects = [
     accent: "#10b981",
     category: "Full Stack",
     stars: 54,
+  },
+  {
+    title: "StartupForge",
+    desc: "A full-stack startup collaboration platform with dedicated dashboards for Founders, Collaborators, and Admins.",
+    long: "StartupForge is a comprehensive startup collaboration platform designed to connect founders with passionate collaborators. It features specialized dashboards for Founders (to manage startups and post requirements), Collaborators (to apply and contribute), and Admins (for platform moderation). Built for scaling startup ecosystems.",
+    tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    github: "https://github.com/Kaowsar-Azad/StartupForge-Client",
+    githubServer: "https://github.com/Kaowsar-Azad/StartupForge-Server",
+    live: "https://startup-forge-client.vercel.app/",
+    emoji: "https://camo.githubusercontent.com/cf24bed687aaba99f16013b959bc6da89501c17e6be583718afc82dab5ed836c/68747470733a2f2f692e6962622e636f2e636f6d2f4b6366385367376b2f436861742d4750542d496d6167652d4a756c2d392d323032362d30342d33302d33352d504d2e706e67",
+    gradient: "from-indigo-600 to-blue-900",
+    accent: "#4f46e5",
+    category: "Full Stack",
+    stars: 48,
   }
 ];
 
 const categories = ["All","Frontend","Full Stack"];
 
-function ProjectCard({ project, i, setSelected }) {
+function ProjectCard({ project, i, setSelected, inView }) {
   const [hovered, setHovered] = useState(false);
 
   // Each card spreads from a different direction based on its grid position
@@ -65,8 +79,7 @@ function ProjectCard({ project, i, setSelected }) {
     <motion.div
       layout
       initial={{ opacity: 0, y: 150, x: spreadX, rotate: spreadRotate, scale: 0.8 }}
-      whileInView={{ opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0, margin: "0px" }}
+      animate={inView ? { opacity: 1, y: 0, x: 0, rotate: 0, scale: 1 } : { opacity: 0, y: 150, x: spreadX, rotate: spreadRotate, scale: 0.8 }}
       transition={{
         duration: 0.75,
         delay: i * 0.12,
@@ -229,7 +242,7 @@ export default function ProjectsSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
-              <ProjectCard key={project.title} project={project} i={i} setSelected={setSelected} />
+              <ProjectCard key={project.title} project={project} i={i} setSelected={setSelected} inView={inView} />
             ))}
           </AnimatePresence>
         </div>
@@ -286,24 +299,41 @@ export default function ProjectsSection() {
                   </motion.div>
 
                   {/* বাটনসমূহ */}
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <motion.a 
-                      whileHover={{ scale: 1.02, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      href={selected.github} 
-                      target="_blank" 
-                      className="flex-1 flex items-center justify-center gap-2 bg-white/5 py-4 rounded-xl text-white hover:bg-white/10 hover:text-cyan-400 border border-white/10 hover:border-cyan-500/30 transition-all group"
-                    >
-                      <FiGithub className="text-xl group-hover:rotate-12 transition-transform" />
-                      <span className="font-medium">Source Code</span>
-                    </motion.a>
-                    
+                  <div className="flex flex-col gap-3">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <motion.a 
+                        whileHover={{ scale: 1.02, y: -2 }}
+                        whileTap={{ scale: 0.98 }}
+                        href={selected.github} 
+                        target="_blank" 
+                        className="flex-1 flex items-center justify-center gap-2 bg-white/5 py-4 rounded-xl text-white hover:bg-white/10 hover:text-cyan-400 border border-white/10 hover:border-cyan-500/30 transition-all group"
+                      >
+                        <FiGithub className="text-xl group-hover:rotate-12 transition-transform" />
+                        <span className="font-medium">
+                          {selected.githubServer ? "Client Code" : "Source Code"}
+                        </span>
+                      </motion.a>
+
+                      {selected.githubServer && (
+                        <motion.a 
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                          href={selected.githubServer} 
+                          target="_blank" 
+                          className="flex-1 flex items-center justify-center gap-2 bg-white/5 py-4 rounded-xl text-white hover:bg-white/10 hover:text-cyan-400 border border-white/10 hover:border-cyan-500/30 transition-all group"
+                        >
+                          <FiGithub className="text-xl group-hover:rotate-12 transition-transform" />
+                          <span className="font-medium">Server Code</span>
+                        </motion.a>
+                      )}
+                    </div>
+
                     <motion.a 
                       whileHover={{ scale: 1.02, y: -2 }}
                       whileTap={{ scale: 0.98 }}
                       href={selected.live} 
                       target="_blank" 
-                      className="flex-1 flex items-center justify-center gap-2 btn-neon py-4 rounded-xl text-white font-bold group"
+                      className="w-full flex items-center justify-center gap-2 btn-neon py-4 rounded-xl text-white font-bold group"
                     >
                       <span>Live Preview</span>
                       <FiExternalLink className="text-xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
