@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import Tilt from "react-parallax-tilt";
 import {
-  SiHtml5, SiJavascript, SiReact, SiNextdotjs, SiTailwindcss, SiFramer, SiVuedotjs,
+  SiHtml5, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiTailwindcss,
   SiNodedotjs, SiExpress, SiMongodb, SiFirebase, SiJsonwebtokens,
   SiGithub, SiVercel, SiFigma, SiNpm, SiNetlify, SiGit
 } from "react-icons/si";
-import { FaNetworkWired, FaMagic, FaCode, FaPaintBrush, FaIcons, FaRocket, FaPalette, FaBell } from "react-icons/fa";
+import { FaNetworkWired, FaMagic, FaCode, FaPaintBrush, FaIcons, FaRocket, FaPalette, FaBell, FaShieldAlt } from "react-icons/fa";
 
 const categories = [
   {
@@ -17,18 +17,20 @@ const categories = [
     skills: [
       { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
       { name: "CSS3", icon: FaPaintBrush, color: "#1572B6" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
-      { name: "React", icon: SiReact, color: "#61DAFB" },
-      { name: "Vue.js", icon: SiVuedotjs, color: "#41B883" },
-      { name: "Framer Motion", icon: SiFramer, color: "#E91E63" },
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+      { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+      { name: "React", icon: SiReact, color: "#61DAFB" },
+      { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
     ],
   },
   {
     label: "Backend",
     skills: [
+      { name: "Better Auth", icon: FaShieldAlt, color: "#ffffff" },
       { name: "Node.js", icon: SiNodedotjs, color: "#83CD29" },
       { name: "MongoDB", icon: SiMongodb, color: "#13AA52" },
+      { name: "Express", icon: SiExpress, color: "#ffffff" },
       { name: "JSON API", icon: SiJsonwebtokens, color: "#f59e0b" },
     ],
   },
@@ -107,7 +109,7 @@ function FanCard({ skill, index, total, inView, multiplier }) {
         scale: 1.15,
         zIndex: 100
       }}
-      className="absolute bottom-4 cursor-pointer"
+      className="absolute bottom-4 left-[calc(50%-90px)] md:left-[calc(50%-110px)] cursor-pointer"
       style={{
         transformOrigin: "bottom center",
         zIndex: zIndex
@@ -151,7 +153,7 @@ function FanCard({ skill, index, total, inView, multiplier }) {
             }
           }}
           initial="initial"
-          animate={isHovered || isMainCard ? "clear" : "blurred"}
+          animate="clear"
           className="flex flex-col items-center justify-center gap-4 z-10"
         >
           <Icon
@@ -182,9 +184,9 @@ export default function SkillsSection() {
   // Handle responsive spread for the fan
   useEffect(() => {
     const updateMultiplier = () => {
-      if (window.innerWidth < 640) setMultiplier(28); // Mobile
-      else if (window.innerWidth < 1024) setMultiplier(45); // Tablet
-      else setMultiplier(65); // Desktop
+      if (window.innerWidth < 640) setMultiplier(35); // Mobile
+      else if (window.innerWidth < 1024) setMultiplier(60); // Tablet
+      else setMultiplier(85); // Desktop
     };
     updateMultiplier();
     window.addEventListener("resize", updateMultiplier);
